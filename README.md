@@ -69,10 +69,10 @@ Here is the JSON encoded result, used for the bar chart visualizations:
 
 Files:
 
--Testdrive.php creates the single-entity table with object-oriented progamming. Methods found in Property.php.  
--Testdrive2.php creates the relationships tables and is procedurally based.  
--Scraper.php is the webpage.  
--getData.php is used with library.js to listen to user's click, do the query, and display the results.  
--library.js also contains the D3 library and builds visualizations.  
--JSON files included.  
--Classses included. 
+- Testdrive.php creates the single-entity table with object-oriented progamming. Methods found in Property.php.  
+- Testdrive2.php creates the relationships tables and is procedurally based.  
+- Scraper.php is the webpage.  
+- getData.php is used with library.js to listen to user's click, do the query, and display the results.  
+- library.js also contains the D3 library and builds visualizations.  
+- JSON files included.  
+- Classses included. 
