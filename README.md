@@ -7,7 +7,8 @@ Examples follow to demonstrate how data was scraped and the database was built.
 
 This scraper collected biographical data from each character entry in this fan-made wikia page: [Stormlight Archive Wikia](http://stormlightarchive.wikia.com/wiki/Category:Characters), the red squares indicate what data was being collected: 
 
-![CharacterPage](https://k-j-oliver.github.io/StormlightArchiveScraper/CharacterPage.png)
+![CharacterPage](https://k-j-oliver.github.io/StormlightArchiveScraper/CharacterPage.png)  
+
 
 The `gender` and `name` tables hold all genders and names inputted by participants:  
 ```
@@ -36,7 +37,8 @@ The `gender` and `name` tables hold all genders and names inputted by participan
 |      10 | Alakavish                    |  
 ```
 
-The second script is run using the character ID from initial scrape to build the various relationship tables. Here is the `characters_gender` table.
+
+The second script is run using the character ID from initial scrape to build the various relationship tables. Here is the `characters_gender` table:
 ```
 +---------------------+--------------+----------------+
 | character_gender_id | character_id | gender         |
@@ -53,7 +55,8 @@ The second script is run using the character ID from initial scrape to build the
 |                  10 |           10 | Male           |
 ```
 
-From this, we can ask MySQL how many characters are female, giving us data to fill the bar chart visualization. 
+
+From this, we can ask MySQL how many characters are female, giving us data to fill the bar chart visualization: 
 ```
 SELECT COUNT(character_id) AS NumberOfCharacters, gender FROM characters_gender WHERE gender = 'Female';
 +--------------------+--------+
