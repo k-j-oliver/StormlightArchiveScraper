@@ -7,7 +7,7 @@ Examples follow to demonstrate how data was scraped and the database was built.
 
 This scraper collects biographical data from each character entry in this fan-made wikia page: [Stormlight Archive Wikia](http://stormlightarchive.wikia.com/wiki/Category:Characters), there red square indicates what data is being collected: 
 
-![CharacterPage](k-j-oliver.github.io/StormlightArchiveScraper/CharacterPage.png)
+![CharacterPage](StormlightArchiveScraper/CharacterPage.png)
 
 The `gender` and `name` tables hold all genders and names inputted by participants:  
 ```
