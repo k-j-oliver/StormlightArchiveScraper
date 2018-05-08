@@ -1,4 +1,4 @@
-# StormlightArchiveScraper
+## [Kathleen Oliver](https://k-j-oliver.github.io)
 April 2018.
 
 This project was built as part of the HuCo 617: Advanced Web Scripting course at University of Alberta. The project used PHP, MySQL, JavaScript, and the D3 library. The purpose was to experiment with building a program that integrated PHP and JavaScript, and turned into an exploration of data collection and management. No research question was posed to be answered by this data, although that potential certainly exists.  
