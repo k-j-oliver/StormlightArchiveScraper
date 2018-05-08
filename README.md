@@ -5,7 +5,7 @@ This project was built as part of the HuCo 617: Advanced Web Scripting course at
 
 Examples follow to demonstrate how data was scraped and the database was built.  
 
-This scraper collects biographical data from each character entry in this fan-made wikia page: [Stormlight Archive Wikia](http://stormlightarchive.wikia.com/wiki/Category:Characters), there red square indicates what data is being collected: 
+This scraper collected biographical data from each character entry in this fan-made wikia page: [Stormlight Archive Wikia](http://stormlightarchive.wikia.com/wiki/Category:Characters), the red squares indicate what data was being collected: 
 
 ![CharacterPage](StormlightArchiveScraper/CharacterPage.png)
 
