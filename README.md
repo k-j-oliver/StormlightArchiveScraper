@@ -1,6 +1,6 @@
 April 2018.
 
-This project was built as part of the HuCo 617: Advanced Web Scripting course at University of Alberta. The project uses PHP, MySQL, JavaScript, and the D3 library. The purpose was to experiment with building a program that integrated PHP and JavaScript, and turned into an exploration of data collection and management. No research question is posed to be answered by this data, although that potential certainly exists. You can view it [here](http://hucodev.artsrn.ualberta.ca/oliver2/scraper/scraper.php), and the code by clicking "view on GitHub" above.    
+This project was built as part of the HuCo 617: Advanced Web Scripting course at University of Alberta. The project uses PHP, MySQL, JavaScript, and the D3 library. The purpose was to experiment with building a program that integrated PHP and JavaScript, and turned into an exploration of data collection and management. No research question is posed to be answered by this data, although that potential certainly exists. You can view it [here](http://hucodev.artsrn.ualberta.ca/oliver2/scraper/scraper.php), and the code by clicking "view on GitHub" above. For context, _The Stormlight Archive_ is a fantasy series by Brandon Sanderson and the wikia page records each character's fantastical biographies.   
 
 Examples follow to demonstrate how data is scraped and the database is built.  
 
