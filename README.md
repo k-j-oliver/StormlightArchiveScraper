@@ -42,7 +42,7 @@ __`characters` table:__
 |           10 | http://stormlightarchive.wikia.com/wiki/Alakavish                     | 
 ...
 ```
-This data is rather flat without relationship tables. Building these relationships requires a second scraper to iterate through the character pages again to match data fields to character id. An example of gender follows, which is straight forward with one-to-one relationships. I also include a snippet from the `books` table, which has a many-to-many relationship.  
+This data is rather flat without relationship tables. Building these relationships requires a second scraper to iterate through the character pages again to match data fields to character id. An example of gender follows, which has a straight forward many-to-one relationship. I also include a snippet from the `books` table: a many-to-many relationship.  
 
 __`characters_gender` table:__
 ```
@@ -61,7 +61,7 @@ __`characters_gender` table:__
 |                  10 |           10 | Male           |
 ...
 ```
-__`characters_boook` table:__  
+__`characters_book` table:__  
 ```
 +-------------------+--------------+---------------------------------+
 | character_book_id | character_id | book                            |
@@ -85,7 +85,8 @@ __`characters_boook` table:__
 ...
 ```
 Looking at `character_id` 7, we see it has 3 books associated with it.  
-With this data structure, we can then query the tables to find how many characters are male, female, or unknown. With books, we can find how many characters are in each book. Going further, we can combine tables to ask something like, "how many characters are female in _Words of Radiance_?" and perhaps comparing that result to a later book.  
+
+With this data structure, we can query the tables to find how many characters are male, female, or unknown. Or we can find how many characters are in each book. Going further, we can combine tables to ask something like, "how many characters are female in _Words of Radiance_?" and perhaps compare that result to a later book.  
 
 __Querying:__ 
 ```
@@ -102,8 +103,10 @@ __JSON encode:__
 
 ### Areas for improvement
 - Given the nature of user-generated content, some data is still not in an ideal format. Most notable are the bracketed qualifiers, i.e. "Male (assumed)" or "Words of Radiance (mentioned)". This can be improved by creating an additional field in the tables to hold this bracketed information. Early attempts at this proved more difficult than imagined, running into issues with my `regex`. 
-- The "status" data is an imperfect system. The field does not capture _when_ the character dies or is alive. Although a character may be dead currently, in the third book, they were still alive in the first or second. The fix for this would involve going into the wikia's history and capturing when the status was changed, cross-referencing that with which book is most recent. 
+- The "status" data is an imperfect system. The field does not capture _when_ the character dies or is alive. Although a character may be dead in the third book, they were still alive in the first or second. The fix would be to go into the wikia's history and capture when the status was changed, cross-referencing that with which book is also added (hopefully). 
 - User-generated content is not precise or perfect, although the peer-reviewed nature of wiki's encourages a level of accuracy. 
+- D3 visualizations could be made smarter by passing variables; currently each graph has its own repeated code. 
+- JSON data could be passed more effectively; currently saving to a file to be read later by the D3 code.
 
 ### Files:
 - Testdrive.php creates the single-entity table with object-oriented progamming. Methods found in Property.php.  
