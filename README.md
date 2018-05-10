@@ -1,11 +1,11 @@
 ### [Kathleen Oliver](https://k-j-oliver.github.io)
 April 2018.
 
-This project was built as part of the HuCo 617: Advanced Web Scripting course at University of Alberta. The project used PHP, MySQL, JavaScript, and the D3 library. The purpose was to experiment with building a program that integrated PHP and JavaScript, and turned into an exploration of data collection and management. No research question was posed to be answered by this data, although that potential certainly exists. You can view it [here](http://hucodev.artsrn.ualberta.ca/oliver2/scraper/scraper.php), and the code by clicking "view on GitHub" above.    
+This project was built as part of the HuCo 617: Advanced Web Scripting course at University of Alberta. The project uses PHP, MySQL, JavaScript, and the D3 library. The purpose was to experiment with building a program that integrated PHP and JavaScript, and turned into an exploration of data collection and management. No research question is posed to be answered by this data, although that potential certainly exists. You can view it [here](http://hucodev.artsrn.ualberta.ca/oliver2/scraper/scraper.php), and the code by clicking "view on GitHub" above.    
 
-Examples follow to demonstrate how data was scraped and the database was built.  
+Examples follow to demonstrate how data is scraped and the database is built.  
 
-This scraper collected biographical data from each character entry in this fan-made wikia page: [Stormlight Archive Wikia](http://stormlightarchive.wikia.com/wiki/Category:Characters), the red squares indicate what data was being collected: 
+This scraper collects biographical data from each character entry in this fan-made wikia page: [Stormlight Archive Wikia](http://stormlightarchive.wikia.com/wiki/Category:Characters), the red squares indicate what data is collected: 
 
 ![CharacterPage](https://k-j-oliver.github.io/StormlightArchiveScraper/CharacterPage.png)  
 
@@ -42,8 +42,8 @@ __`characters` table:__
 |           10 | http://stormlightarchive.wikia.com/wiki/Alakavish                     | 
 ...
 ```
-This data is rather flat without relationship tables. Building these relationships required a second scraper to iterate through the character pages and match data fields to character id. An example of gender follows, which is straight forward with one-to-one relationships. I also include a snippet from the `books` table, which has a many-to-many relationship. 
-__The second script is run using the character ID from initial scrape to build the various relationship tables. Here is the `characters_gender` table:__
+This data is rather flat without relationship tables. Building these relationships requires a second scraper to iterate through the character pages again to match data fields to character id. An example of gender follows, which is straight forward with one-to-one relationships. I also include a snippet from the `books` table, which has a many-to-many relationship. 
+__`characters_gender` table:__
 ```
 +---------------------+--------------+----------------+
 | character_gender_id | character_id | gender         |
@@ -59,7 +59,9 @@ __The second script is run using the character ID from initial scrape to build t
 |                   9 |            9 | Male           |
 |                  10 |           10 | Male           |
 ...
-
+```
+__`characters_boook` table:__  
+```
 +-------------------+--------------+---------------------------------+
 | character_book_id | character_id | book                            |
 +-------------------+--------------+---------------------------------+
@@ -81,8 +83,9 @@ __The second script is run using the character ID from initial scrape to build t
 |                16 |           10 | NULL                            |
 ...
 ```
-
-__From this, we can ask MySQL how many characters are female, giving us data to fill the bar chart visualization:__ 
+Looking at `character_id` 7, we see it has 3 books associated with it.  
+With this data structure, we can then query the tables to find how many characters are male, female, or unknown. With books, we can find how many characters are in each book. Going further, we can combine tables to ask something like, "how many characters are female in _Words of Radiance_?" and perhaps comparing that result to a later book.  
+__Querying:__ 
 ```
 SELECT COUNT(character_id) AS NumberOfCharacters, gender FROM characters_gender WHERE gender = 'Female';
 +--------------------+--------+
@@ -92,9 +95,13 @@ SELECT COUNT(character_id) AS NumberOfCharacters, gender FROM characters_gender 
 +--------------------+--------+
 ```
 
-__Here is the JSON encoded result, used for the bar chart visualizations:__
+__JSON encode:__  
 `[{"NumberOfCharacters":"316","gender":"Male"},{"NumberOfCharacters":"106","gender":"Female"},{"NumberOfCharacters":"2","gender":"NULL"},{"NumberOfCharacters":"1","gender":"Male (assumed)"},{"NumberOfCharacters":"1","gender":"Unknown"}]`
 
+### Areas for improvement
+- Given the nature of user-generated content, some data is still not in an ideal format. Most notable are the bracketed qualifiers, i.e. "Male (assumed)" or "Words of Radiance (mentioned)". This can be improved by creating an additional field in the tables to hold this bracketted information. Early attempts at this proved more difficult than imagined, running into recognition issues with my `regex`. 
+- The "status" data is an imperfect system. The field does not capture _when_ the character dies or is alive. Although a character may be dead currently, in the third book, they were still alive in the first or second. The fix for this would involve going into the wikia's history and capturing when the status was changed, cross-referencing that with which book is most recent. 
+- User-generated content is not precise or perfect, although the peer-reviewed nature of wiki's encourages a level of accuracy. 
 
 Files:
 - Testdrive.php creates the single-entity table with object-oriented progamming. Methods found in Property.php.  
