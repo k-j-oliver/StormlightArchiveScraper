@@ -10,7 +10,7 @@ This scraper collected biographical data from each character entry in this fan-m
 ![CharacterPage](https://k-j-oliver.github.io/StormlightArchiveScraper/CharacterPage.png)  
 
 
-#### The `gender` and `name` tables hold all genders and names inputted by participants:  
+__The `gender` and `name` tables hold all genders and names inputted by participants:__  
 ```
 +-----------+----------------+  
 | gender_id | gender         |  
@@ -38,7 +38,7 @@ This scraper collected biographical data from each character entry in this fan-m
 ```
 
 
-#### The second script is run using the character ID from initial scrape to build the various relationship tables. Here is the `characters_gender` table:
+__The second script is run using the character ID from initial scrape to build the various relationship tables. Here is the `characters_gender` table:__
 ```
 +---------------------+--------------+----------------+
 | character_gender_id | character_id | gender         |
@@ -56,7 +56,7 @@ This scraper collected biographical data from each character entry in this fan-m
 ```
 
 
-#### From this, we can ask MySQL how many characters are female, giving us data to fill the bar chart visualization: 
+__From this, we can ask MySQL how many characters are female, giving us data to fill the bar chart visualization:__ 
 ```
 SELECT COUNT(character_id) AS NumberOfCharacters, gender FROM characters_gender WHERE gender = 'Female';
 +--------------------+--------+
@@ -66,7 +66,7 @@ SELECT COUNT(character_id) AS NumberOfCharacters, gender FROM characters_gender 
 +--------------------+--------+
 ```
 
-#### Here is the JSON encoded result, used for the bar chart visualizations:
+__Here is the JSON encoded result, used for the bar chart visualizations:__
 `[{"NumberOfCharacters":"316","gender":"Male"},{"NumberOfCharacters":"106","gender":"Female"},{"NumberOfCharacters":"2","gender":"NULL"},{"NumberOfCharacters":"1","gender":"Male (assumed)"},{"NumberOfCharacters":"1","gender":"Unknown"}]`
 
 
