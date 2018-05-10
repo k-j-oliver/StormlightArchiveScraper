@@ -58,8 +58,29 @@ __The second script is run using the character ID from initial scrape to build t
 |                   8 |            8 | Male           |
 |                   9 |            9 | Male           |
 |                  10 |           10 | Male           |
-```
+...
 
++-------------------+--------------+---------------------------------+
+| character_book_id | character_id | book                            |
++-------------------+--------------+---------------------------------+
+|                 1 |            1 | Words of Radiance (mentioned)   |
+|                 2 |            2 | NULL                            |
+|                 3 |            3 | NULL                            |
+|                 4 |            4 | NULL                            |
+|                 5 |            5 | The Way of Kings                |
+|                 6 |            5 | Words of Radiance               |
+|                 7 |            5 | Oathbringer                     |
+|                 8 |            6 | NULL                            |
+|                 9 |            7 | The Way of Kings (mentioned)    |
+|                10 |            7 | Words of Radiance (mentioned)   |
+|                11 |            7 | Oathbringer                     |
+|                12 |            8 | NULL                            |
+|                13 |            9 | The Way of Kings                |
+|                14 |            9 | Words of Radiance               |
+|                15 |            9 | Oathbringer                     |
+|                16 |           10 | NULL                            |
+...
+```
 
 __From this, we can ask MySQL how many characters are female, giving us data to fill the bar chart visualization:__ 
 ```
