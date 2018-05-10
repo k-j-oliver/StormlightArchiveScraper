@@ -10,7 +10,7 @@ This scraper collected biographical data from each character entry in this fan-m
 ![CharacterPage](https://k-j-oliver.github.io/StormlightArchiveScraper/CharacterPage.png)  
 
 
-__The `gender` and `name` tables hold all genders and names inputted by participants:__  
+__The `gender` and `characters` tables hold all genders and names inputted by participants:__  
 ```
 +-----------+----------------+  
 | gender_id | gender         |  
@@ -22,19 +22,19 @@ __The `gender` and `name` tables hold all genders and names inputted by particip
 |         5 | Unknown        |  
 +-----------+----------------+  
 
-+---------+------------------------------+  
-| name_id | name                         |  
-+---------+------------------------------+  
-|       1 | Abrial                       |  
-|       2 | Abrobadar                    |  
-|       3 | Abronai                      |  
-|       4 | Adis                         |  
-|       5 | Adolin Kholin                |  
-|       6 | Adrotagia                    |  
-|       7 | Aesudan Kholin               |  
-|       8 | Alabet                       |  
-|       9 | Aladar                       |  
-|      10 | Alakavish                    |  
++--------------+-----------------------------------------------------------------------+
+| character_id | character_url                                                         |
++--------------+-----------------------------------------------------------------------+
+|            1 | http://stormlightarchive.wikia.com/wiki/Abrial                        |
+|            2 | http://stormlightarchive.wikia.com/wiki/Abrobadar                     |
+|            3 | http://stormlightarchive.wikia.com/wiki/Abronai                       |
+|            4 | http://stormlightarchive.wikia.com/wiki/Adis                          |
+|            5 | http://stormlightarchive.wikia.com/wiki/Adolin_Kholin                 |
+|            6 | http://stormlightarchive.wikia.com/wiki/Adrotagia                     |
+|            7 | http://stormlightarchive.wikia.com/wiki/Aesudan_Kholin                |
+|            8 | http://stormlightarchive.wikia.com/wiki/Alabet                        |
+|            9 | http://stormlightarchive.wikia.com/wiki/Aladar                        |
+|           10 | http://stormlightarchive.wikia.com/wiki/Alakavish                     | 
 ```
 
 
