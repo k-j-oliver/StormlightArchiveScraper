@@ -9,8 +9,11 @@ This scraper collected biographical data from each character entry in this fan-m
 
 ![CharacterPage](https://k-j-oliver.github.io/StormlightArchiveScraper/CharacterPage.png)  
 
+### Data structure
+Deciding how to structure the data was a task. In the first iteration the scraper built a single table to hold all of the data. This was not ideal, however, because some fields had multiple data. In the character page above, for instance, Kaladin is associated with multiple books. Trying to separate these books while maintaining a single table was difficult and impractical.  
+I decided to create single tables for each piece of data being collected (the red squares), and to control the relationship tables with the character id attached to the character url. 
 
-__The `gender` and `characters` tables hold all genders and names inputted by participants:__  
+__`gender` table:__  
 ```
 +-----------+----------------+  
 | gender_id | gender         |  
@@ -20,8 +23,10 @@ __The `gender` and `characters` tables hold all genders and names inputted by pa
 |         3 | NULL           |  
 |         4 | Male (assumed) |  
 |         5 | Unknown        |  
-+-----------+----------------+  
-
++-----------+----------------+
+```
+__`characters` table:__  
+```
 +--------------+-----------------------------------------------------------------------+
 | character_id | character_url                                                         |
 +--------------+-----------------------------------------------------------------------+
@@ -35,9 +40,9 @@ __The `gender` and `characters` tables hold all genders and names inputted by pa
 |            8 | http://stormlightarchive.wikia.com/wiki/Alabet                        |
 |            9 | http://stormlightarchive.wikia.com/wiki/Aladar                        |
 |           10 | http://stormlightarchive.wikia.com/wiki/Alakavish                     | 
+...
 ```
-
-
+This data is rather flat without relationship tables. Building these relationships required a second scraper to iterate through the character pages and match data fields to character id. An example of gender follows, which is straight forward with one-to-one relationships. I also include a snippet from the `books` table, which has a many-to-many relationship. 
 __The second script is run using the character ID from initial scrape to build the various relationship tables. Here is the `characters_gender` table:__
 ```
 +---------------------+--------------+----------------+
