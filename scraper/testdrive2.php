@@ -43,7 +43,7 @@ $link = mysqli_connect("localhost", "user", "password", "database");
 		return $string;
 	}
 
-		function combineHtml() {
+	function combineHtml() {
 		$html1 = file_get_contents("http://stormlightarchive.wikia.com/wiki/Category:Characters");
 		$html2 = file_get_contents("http://stormlightarchive.wikia.com/wiki/Category:Characters?page=2");
 		$html3 = file_get_contents("http://stormlightarchive.wikia.com/wiki/Category:Characters?page=3");
